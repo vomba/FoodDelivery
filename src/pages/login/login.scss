@@ -2,7 +2,10 @@ page-login {
 
 }
 
-div {
-  text-align:center;
-  margin:auto;
+
+
+page-login {
+  .invalid {
+    border-bottom: 1px solid #FF6153;
+  }
 }
