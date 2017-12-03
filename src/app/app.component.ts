@@ -3,13 +3,18 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-//import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home/home';
 import {LoginPage} from "../pages/login/login";
+import firebase from "firebase";
 @Component({
   templateUrl: 'app.html'
 })
+
+
+
+
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any ;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -17,6 +22,27 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      //firebase integration
+
+      firebase.initializeApp({
+        apiKey: "AIzaSyDx1B9z_GNk_GeNICEt2AHAoXQZdsyBPP0",
+        authDomain: "food-delivery-f9616.firebaseapp.com",
+        databaseURL: "https://food-delivery-f9616.firebaseio.com",
+        storageBucket: "food-delivery-f9616.appspot.com",
+        messagingSenderId: "605907856931"
+      });
+
+      const unsubscribe = firebase.auth().onAuthStateChanged( user => {
+        if (!user) {
+          this.rootPage = 'LoginPage';
+          unsubscribe();
+        } else {
+          this.rootPage = HomePage;
+          unsubscribe();
+        }
+      });
+
     });
   }
 }
