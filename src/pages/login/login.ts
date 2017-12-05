@@ -9,6 +9,8 @@ import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import {Component} from "@angular/core";
+import {SignupPage} from "../signup/signup";
+import {ResetPasswordPage} from "../reset-password/reset-password";
 
 
 /**
@@ -74,11 +76,11 @@ export class LoginPage {
   }
 
   goToSignup(): void {
-    this.navCtrl.push('SignupPage');
+    this.navCtrl.push(SignupPage);
   }
 
   goToResetPassword(): void {
-    this.navCtrl.push('ResetPasswordPage');
+    this.navCtrl.push(ResetPasswordPage);
   }
 
 
