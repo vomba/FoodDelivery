@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import firestore from "firebase";
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
 
+
+export interface Deal { Name: String;}
 
 
 /**
@@ -14,9 +15,17 @@ import {Observable} from "rxjs/Observable";
  */
 
 @IonicPage()
+
 @Component({
   selector: 'page-deals',
   templateUrl: 'deals.html',
+  template: `
+    <ul>
+      <li *ngFor="let Deal of Deals | async">
+        {{ Deal.Name }}
+      </li>
+    </ul>
+  `
 })
 
 
@@ -24,13 +33,14 @@ import {Observable} from "rxjs/Observable";
 
 export class DealsPage {
 
-  private DealsCollection : AngularFirestoreCollection<Deals>;
-  deals : Observable<Deals[]>;
+  DealsCollection: AngularFirestoreCollection<Deal>;
+  Deals: Observable<Deal[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private readonly afs: AngularFirestore) {
-        this.DealsCollection = afs.collection<Deals>('deals');
-        this.deals = this.DealsCollection.valueChanges();
-    }
+
+    this.DealsCollection = afs.collection<Deal>('Deals');
+    this.Deals = this.DealsCollection.valueChanges();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DealsPage');
