@@ -13,13 +13,26 @@ import {ResetPasswordPage} from "../pages/reset-password/reset-password";
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {DealsPage} from "../pages/deals/deals";
+import {InfoPage} from "../pages/info/info";
+
+export const firebaseConfig= {
+  apiKey: "AIzaSyDx1B9z_GNk_GeNICEt2AHAoXQZdsyBPP0",
+  authDomain: "food-delivery-f9616.firebaseapp.com",
+  databaseURL: "https://food-delivery-f9616.firebaseio.com",
+  projectId: "food-delivery-f9616",
+  storageBucket: "food-delivery-f9616.appspot.com",
+  messagingSenderId: "605907856931"
+};
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    DealsPage,
+    InfoPage,
 
   ],
   imports: [
@@ -29,6 +42,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
       apiKey: "AIzaSyDx1B9z_GNk_GeNICEt2AHAoXQZdsyBPP0",
       authDomain: "food-delivery-f9616.firebaseapp.com",
       databaseURL: "https://food-delivery-f9616.firebaseio.com",
+      projectId: "food-delivery-f9616",
       storageBucket: "food-delivery-f9616.appspot.com",
       messagingSenderId: "605907856931"
     }),
@@ -40,7 +54,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     MyApp,
     HomePage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    DealsPage,
+    InfoPage,
   ],
   providers: [
     StatusBar,

@@ -14,5 +14,10 @@
 
 
 <ion-content padding>
+  <ul>
+    <li *ngFor="let Deal of Deals | async">
+      {{Deal.name}}
+    </li>
+  </ul>
 
 </ion-content>
